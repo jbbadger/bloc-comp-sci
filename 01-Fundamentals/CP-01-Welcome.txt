@@ -1,0 +1,11 @@
+Take some time to reflect. Submit a message explaining what you think your
+strengths and weaknesses are regarding the previous modules. Be verbose. The
+more insight we have, the better we will be to help you grow.
+
+**For weaknesses, the difference between JSX and normal JavaScript can still be
+confusing.  My JavaScript still needs a lot of repetition which I've been
+supplementing with CodeWars.  Available time is also a concern.  My job is
+entering it's busy season and I have an 8 month old son.
+Strengths include HTML and CSS which seem easy compared with JavaScript.  Also,
+my general persistence is a boon.  Even in the face of extreme doubt and
+frustration I'll keep moving forward.**
