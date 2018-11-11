@@ -1,0 +1,109 @@
+1.  In your own words, explain what clean code is and why it is important.
+
+Clean code is multi-factorial and includes naming conventions that are descriptive
+and understandable, creating reusable code which decreases repetition, using comments
+only for code with special circumstance, functions only performing a single action or
+responsibility, nesting of only up to two levels deep, extracting code where
+possible to simplify, and writing code for present use and not future predicted
+use.  Clean code is important for clarity, refactoring, and bug finding.
+
+2.  Read this article about Toyota and their use of bad code. Although you may not
+yet understand all of the topics discussed, think about another commonly used
+object that relies on computers and explain what would happen if the code was
+not created to an acceptable standard.
+
+A commonly used object may be a clothes dryer which could overheat and become a
+fire hazard if the code was subpar.
+
+3.  Would you consider the following to be clean code? Explain why or why not. If
+not, refactor the code.
+
+No the function has more than one responsibility and it is over commented.  I
+would refactor in this manner:
+
+FUNCTION isFahrenheit(y)
+IF y = "F" RETURN true
+
+FUNCTION calculateTemperature(x)
+IF isFahrenheit equals true
+SET z to (x−32) * (5/9)       // convert fahrenheit to celsius
+ELSE SET z to x * 1.8000 + 32.00   // convert celsius to fahrenheit
+PRINT Z
+END FUNCTION
+
+4.  Would you consider the following to be clean code? Explain why or why not.
+If not, refactor the code.
+
+It's close to being clean but I would refactor in the following manner:
+
+FUNCTION calcPercent(sum, total)
+ IF (total = 0)
+ PRINT "Sorry, cannot divide by 0"
+ ELSE
+ SET percentage to sum / total * 100
+ PRINT percentage
+END FUNCTION
+
+5.  Using pseudocode, refactor the code for the following examples using the
+principles you have learned in this checkpoint.
+
+a. The following function prints the subtotal of a customer's transaction and
+receives payment accordingly.
+
+FUNCTION calcTotal(subTotal, discountRate)
+   SET total to (subTotal * discountRate + (subTotal * tax))
+   PRINT "Your total due is: " + total
+   RETURN total
+   END function
+
+FUNCTION setReceipt(paymentType)
+CALL getPayment RETURN amount
+IF paymentType = 'CASH'
+    PRINT "Change due: " + amount - calcTotal
+ELSE IF paymentType = 'CREDIT CARD' THEN
+    PRINT "Your credit card has been charged: " + calcTotal
+END IF
+END FUNCTION
+
+6.  Square Given an array of integers, find out whether the sum of the integers
+is a perfect square. If it is a perfect square, return the square root,
+otherwise return the sum.
+
+let arr1 = [6, 1, 6, 3]
+
+function sumArr (arr){
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++){
+    sum += arr[i];
+  }
+  return sum;
+}
+
+let sumArr1 = sumArr(arr1);
+
+function isSqRootWhole(number){
+  let sqRoot = Math.sqrt(number);
+  let rndRoot = Math.round(sqRoot);
+  return sqRoot === rndRoot;
+}
+
+console.log(isSqRootWhole(sumArr1));
+
+7.  Duplicate Given an array of integers, find out whether the array contains
+any duplicate elements. The function should return true if any value appears
+at least twice in the array, and false if every element is distinct.
+
+let arr1 = [6, 1, 5, 3, 10, 11, 26, 32, 2, 10]
+let sortedArr = arr1.sort();
+
+function isDuplicate(arr) {
+  let arrNum = 0;
+  for(let i=0; i < sortedArr.length; i++){
+    if(arrNum === sortedArr[i]){
+      return true;
+    } else { arrNum = sortedArr[i];}
+  }
+  return false
+}
+
+console.log(isDuplicate(sortedArr));
