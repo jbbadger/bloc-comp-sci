@@ -65,6 +65,77 @@ ELSE IF paymentType = 'CREDIT CARD' THEN
 END IF
 END FUNCTION
 
+b. The following function checks out a book if there are no issues with the
+guest's account.
+
+Function isBookOverdue(guest)
+IF guest.hasOverdueBooks THEN
+  IF guest.outstandingFees > 0 THEN
+  RETURN True
+ELSE
+  RETURN False
+END IF
+END FUNCTION
+
+FUNCTION checkoutBook(book, guest)
+IF guest.accountActive THEN
+  IF NOT isBookOverdue THEN
+    APPEND book to guest.books
+    PRINT “Your books have been issued.”
+ELSE
+  PRINT “Unable to check out books.”
+END IF
+END FUNCTION
+
+FUNCTION isBookCheckedOut(book, guest)
+IF book === guest.book THEN
+  SET book.status to “Checked Out”
+ELSE SET book.status to “Available”
+END IF
+RETURN book.status
+END FUNCTION
+
+c. The following class is a code snippet that should support the transactions
+a customer can perform at an ATM.
+
+CLASS BankBalance
+
+FUNCTION displayBalance
+  PRINT balance
+END FUNCTION
+
+CLASS BankDeposit
+
+FUNCTION deposit(amount)
+  SET balance to balance + amount
+END FUNCTION
+
+CLASS BankWithdrawal
+
+FUNCTION withdraw(amount)
+  IF balance > amount THEN
+    SET balance to balance – amount
+  ELSE
+    PRINT “Cannot withdraw amount greater than balance.”
+END IF
+END FUNCTION
+
+CLASS CreditCardOffer
+
+FUNCTION creditCardOffer
+  IF NOT(customer.hasCreditCard) THEN
+    CALL offerCreditCard
+  END
+END FUNCTION
+
+CLASS CheckingAccountOffer
+
+FUNCTION checkStatus
+  IF NOT(customer.hasCheckingAccount) THEN
+    CALL offerCheckingAccount
+  END
+END FUNCTION
+
 6.  Square Given an array of integers, find out whether the sum of the integers
 is a perfect square. If it is a perfect square, return the square root,
 otherwise return the sum.
@@ -107,3 +178,24 @@ function isDuplicate(arr) {
 }
 
 console.log(isDuplicate(sortedArr));
+
+Extra Credit
+8.  Anagram An anagram is a word, phrase, or name formed by rearranging the
+letters of another word. For example, spar can be formed from rasp. Given two
+strings, stringOne and stringTwo, determine if stringOne is an anagram of
+stringTwo. Assume that the strings contain only lowercase letters and do not
+worry about case-sensitivity. Hint: Your first task will be to convert the
+strings to arrays.
+
+let word1 = "spar";
+let word2 = "rasp";
+
+function isAnagram (wordOne, wordTwo) {
+  let arr1 = wordOne.split('');
+  let arr2 = wordTwo.split('');
+  let sort1 = arr1.sort().toString();
+  let sort2 = arr2.sort().toString();
+  return sort1 === sort2;
+}
+
+console.log(isAnagram(word1, word2));
