@@ -1,0 +1,82 @@
+Exercises
+For exercises requiring code, you are free to use the language of your choice.
+
+Give all the code and written answers in a file named intro-data-structures.txt:
+
+1. A line of people at an amusement park ride.
+The line is composed of members, represented as strings.
+There is a front to the line, as well as a back.
+When someone enters the line, place them at the end.
+People may leave the line whenever they see fit, and those behind them take their place.
+Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+f) If Patrick wants to leave the line, how would you delete him from the array?
+
+let rideLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+function addMemberLast(arr, member){
+  arr.push(member);
+  return arr;
+}
+
+function findMemberPosition(arr, member){
+  return arr.indexOf(member);
+}
+
+function isMemberInLine(arr, member){
+  for(let i=0; i<arr.length; i++){
+    if (arr[i] === member)
+    return true;
+  }
+  return member + " not in line"
+}
+
+function addMemberMiddle(arr, estMember, newMember){
+  estPosition = findMemberPosition(arr, estMember);
+  arr.splice(estPosition, 0, newMember);
+  return arr;
+}
+
+function removeMember (arr, member){
+  estPosition = findMemberPosition(arr, member);
+  arr.splice(estPosition, 1);
+  return arr;
+}
+
+console.log(addMemberLast(rideLine, "Mary"));
+console.log(findMemberPosition(rideLine, "Josh"));
+console.log(isMemberInLine(rideLine, "Emily"));
+console.log(addMemberMiddle(rideLine, "Ava", "Melissa"));
+console.log(removeMember(rideLine, "Patrick"));
+
+2. Provide another real-world example that you can model using a data structure.
+
+Here is a first in, last out data structure for a parking driveway:
+
+const toyota = "Bob"
+const buick = "Randy"
+const ford = "Todd"
+let carOrder = [];
+
+function orderInDriveway(front, middle, rear){
+  carOrder.push(front, middle, rear);
+  return carOrder;
+}
+
+function departureOrder(){
+  return carOrder.reverse();
+}
+
+console.log(orderInDriveway(toyota, buick, ford));
+console.log(departureOrder());
+
+3. How would your data structure allow developers to access and manipulate the data?
+
+Any variables could be input to the 3 parking spots depending on who is in the front,
+middle, or rear.  Once established, the order is automatically reversed to give information
+on the order of departure.  
